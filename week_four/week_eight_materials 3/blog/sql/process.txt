@@ -1,0 +1,37 @@
+MYSQL DATABASE CREATION FLOW:
+
+CREATE DATABASE `hacker_blog` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin; //creates a new database for our blog
+
+//Add Users Table
+
+CREATE TABLE user(
+id bigint auto_increment NOT NULL,
+user_first_name varchar(255) NULL,
+user_last_name varchar(255) NULL,
+username varchar(255) NOT NULL,
+password tinytext NOT NULL,
+PRIMARY KEY(id)
+)
+
+// Primary Key is our Index, auto_increment means increment always unique
+
+// Add Table for Navigation
+CREATE TABLE navigation(
+id bigint auto_increment not null,
+nav_name varchar(255) not null,
+parent int not null,
+private binary not null,
+route tinytext,
+PRIMARY KEY(id)
+)
+
+//route = actual URL value for page (used in .htaccess)
+
+// Write in a User Privileges Table (got to have a method to this madness)
+
+CREATE TABLE user_privileges(
+id bigint auto_increment not null,
+user_id bigint not null,
+privilege_type enum('basic','paid','write','god') not_null DEFAULT 'basic',
+PRIMARY KEY(id)
+)

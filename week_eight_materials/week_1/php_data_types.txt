@@ -1,0 +1,71 @@
+PHP DATA TYPES:
+// 3 types: scalar, compound, special
+
+SCALAR TYPES:
+1. Strings
+2. Integers 
+3. Floats
+4. Booleans
+
+Strings
+-------------------
+(Text you want to output to just be read by the PHP Parser)
+
+ex: 
+
+$string = 'Hello Everyone';
+
+Integers 
+--------------------
+(whole numbers / non-fraction)
+// can be decimal, octal, or hexadecimal
+ex: $num = 42
+    $oct = 0777
+    $hex = 0xC4E
+
+Boolean
+---------------------
+// Simply True or False
+$bool = 0;
+$bool = false;
+$bool = 1;
+$bool = true;
+
+Floats 
+---------------------
+// floating-point numbers
+// double
+
+ex: 
+
+$num = 24.3
+
+
+
+Compound Types
+----------------------
+Array, Object
+
+Array
+--------------
+// an array is a way of keeping a set of data together in your programs
+// there are a few types of arrays
+
+1. Simple
+
+ex: 
+$a = array('me','you','them');
+
+// Arrays begin with 0, and work their way up (these are called indexes)
+
+$a[0] = "me"
+
+2. Associative Arrays
+ex: $a = array("clock"=>"7:00");
+echo $a["clock"] // 7:00
+
+
+
+
+
+

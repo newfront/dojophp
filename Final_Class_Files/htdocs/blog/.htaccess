@@ -1,0 +1,24 @@
+Options +FollowSymLinks
+Options +Indexes
+RewriteEngine ON
+# how does this work?
+# Alias soft_link hard_link
+# 
+#Mod_Rewrite (blog_entry.php?action=view&page=<?= title ?> (formatted)
+#http://localhost:8888/blog/hackerblog/users/login
+#users paths
+RewriteRule ^hackerblog/users/(.*)/(.*) users.php?action=$1&id=$2
+RewriteRule ^hackerblog/users/(.*)$ users.php?action=$1
+#simple pages paths
+RewriteRule ^hackerblog/show$ blog_entry.php?action=show
+RewriteRule ^hackerblog/show/(.*)$ blog_entry.php?action=show&id=$1
+RewriteRule ^hackerblog/edit/(.*)$ blog_entry.php?action=edit&id=$1
+RewriteRule ^hackerblog/destroy/(.*)$ blog_entry.php?action=destroy&id=$1
+RewriteRule ^hackerblog/(.*)$ blog.php?action=$1
+#blog pages paths
+
+RewriteRule ^hackerblog/(.*)/(.*)$ blog_entry.php?action=$1&id=$2
+RewriteRule ^hackerblog/(.*)$ blog_entry.php?action=$1
+#why does this work?
+#Apache will go down the line, top to bottom, if the first rule doesn't work
+#then move to the next one!

@@ -1,0 +1,11 @@
+PHP Language Features
+
+1. Practicality. PHP can be used to fulfill all sorts of needs, whether you are building a large scale enterprise website, or you need to just capture the days date or the current time, all things PHP should have to be concrete. PHP is a flexible language that can handle just about everything that is asked of it, it is learning how to ask these questions that will help us get through the class and into the mind of the language. 
+
+<?=date('Y');?> \\ 2010
+
+2. PHP can multiplex or stack functions.
+    
+   $str = substr(md5(microtime()), 0, 5); // random 5 digit code
+
+3. PHP is loosely typed. You don't have to specify that a variable is of type 'bool', or type 'int', you just create a variable and give it a value. This is good and bad since it means that a variable whose original intent may change type and function during the course of a program, of course you can also create comment the use of specific variables and functions and take some extra steps to ensure that the actual code stays in the same type from start to finish within the program

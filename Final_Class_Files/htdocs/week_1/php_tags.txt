@@ -1,0 +1,39 @@
+PHP Tags
+
+
+1. Common Tags
+
+<?php
+// your code
+?>
+  
+2. short tags
+// must enable short-tags in php.ini or be in PHP6
+
+<?
+//your code
+?>
+
+3. quick auto-echo
+<?= $variable ?>
+
+
+PHP Basic Writing to HTML
+
+echo('string'); // can be also called without parenthesis as echo 'string';
+
+print('string');  
+
+PHP Variables: 
+
+Basic: 
+
+$ (dollar sign starts all variable names)
+
+ex: $class = "php"
+
+Constants:
+(within class)
+const NAME;
+
+ex: echo self::NAME;

@@ -1,0 +1,40 @@
+PHP Language Overview
+- Written by Scott Haines
+
+<h3>History</h3>
+The origins of PHP data back to 1995 when Rasmus Lerdorf developed a Perl/CGI script that enabled him to know how many visitors were reading his online resume. He came up with two tools to accomplish this task. the 1st was logging visitor information, whilst the second was displaying the count of visitors to his website. At the time of the two small web hacks, there was nothing else available for the community and emails came swarming in asking Rasmus for the code. He then began giving away his code for free, calling it Personal Homepage. (PHP)
+
+As you may have figured, people soon wanted more, and Rasmus being as nice as he was decided to continue to improve the language. He began to build in new functionality (starting in 1997) to allow the data captured in forms to be converted into variable format to be used in many different ways in the post-form post. ($_POST)
+
+This new release to the language was called PHP-FI (or PHP 2.0). *The FI in PHP-FI stands for Form Interpreter. PHP also had a change of name to Hypertext PreProcessor. 
+
+Shortly after the release of PHP 2.0 the community began to get really involved with the language. Lerdorf bought on a core team of developers to help him with the PHP project. They kept the original concept of incorporating code directly alongside html and rewrote the parsing engine, giving birth to PHP 3.0 (around June 1998). At the time of the 3.0 release over 50,000 people were already building programs in PHP to enhance their web projects.
+
+The Core Team of developers were madly working, testing and adding new and better functionality into their language. They were also working hard to support their community of over 1,000,000 active users. 
+
+<h3>Rift in the System</h3>
+As the community started using PHP for projects that were far larger and more intense then what the original core language was supposed to be used for, they realized that they would have to rethink and rebuild pieces of the core language. Two core developers, Zeev Suraski and Andi Gutmans took the initiaitve to spear head a complete rethinking of the way PHP Operated, culminating in a rewriting of the PHP parser, dubbed 'Zend' scripting engine. The result of this work was the birth of modern PHP, PHP 4. 
+
+<h3>PHP 4</h3>
+<p>Released May 22, 2000. People believe that the 4th release was truly the first Major release of the language.
+<ul>
+<li>Improved Resource Handling</li>
+<li>Object-Oriented Support</li>
+<li>Native Session-Handling Support ($_SESSION) - was PHPLIB extension in PHP3</li>
+<li>Encryptions - mCrypt Library (Blowfish,MD5,SHA1,TripleDES)</li>
+<li>ISAPI Support - (to connect into Windows IIS)</li>
+<li>Native COM/DCOM support - support for windows users, to access and instantiate COM Objects.</li>
+<li>Native Java Support - support for binding to Java Objects from a PHP application</li>
+<li>Perl Compatible Regular Expressions (PCRE) Library</li>
+</ul>
+</p>
+
+<h3>PHP 5</h3>
+<p>Released ....2004<br>
+<ul>
+<li>Vastly Improved Object Oriented Capabilities</li>
+<li>Try/Catch Exception Handling</li>
+<li>Improved String Handling</li>
+<li>Improved XML and Web Services Support</li>
+<li>Native Support for SQLite</li>
+</ul>

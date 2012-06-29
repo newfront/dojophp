@@ -1,0 +1,469 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf290
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier-Bold;\f2\fswiss\fcharset0 ArialMT;
+\f3\fnil\fcharset0 Consolas;}
+{\colortbl;\red255\green255\blue255;\red126\green126\blue126;\red14\green14\blue14;\red234\green234\blue234;
+}
+\margl1440\margr1440\vieww15820\viewh20360\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\f0\b\fs24 \cf0 Getting Setup with Amazon EC2
+\b0 \
+---------------------------------------------\
+
+\b Step 1.
+\b0  go to http://aws.amazon.com\
+\
+
+\b Step 2.
+\b0  go to Producs / ec2 / Signup for EC2\
+\
+
+\b Step 3.
+\b0  get your credit card (or credit from dojo class) input into the system\
+\
+
+\b Step 4.
+\b0  go to the Console (ec2) and login\
+\
+
+\b Step 5.
+\b0  create a keypair for your Amazon EC2 Instances (under Networking & Security > Key Pairs\
+\
+
+\b Step 6.
+\b0  Click 
+\b Create Key Pair
+\b0  (top left of the console)\
+\
+
+\b Step 7.
+\b0  Let the Wizard take you through the steps to complete the keypair, when done it will automatically download this to your computer (don't lose this file, it will give you access to the ec2 computer instance prior to setting up users or assigning passwords)\
+\
+
+\b Getting setup for remote communication on your local machine\
+
+\b0 ----------------------------------------------------------------------------------------\
+\
+
+\b Step 1.
+\b0  Open up your Terminal (mac hd > applications > utilities > terminal)\
+
+\b Step 2.
+\b0  login as 
+\b Super User 
+\b0 *\
+>> su\
+Password: (use your root user password to get in as Super User)\
+\
+
+\b Step 3:
+\b0  Go to your (/) home directory\
+>> cd /\
+\
+
+\b Step 4:
+\b0  Create a new folder called .ec2 (this ensures that it is a private folder and only viewable by authenticated users (owner root:root))\
+>> mkdir .ec2\
+\
+
+\b Step 5:
+\b0  move into the new folder (/.ec2)\
+>> cd /.ec2\
+\
+*note: if you need to double-check the path where you are in unix / linux systems use command 
+\b pad
+\b0 \
+ex: >>pwd #/.ec2\
+\
+
+\b Step 6:
+\b0  move your pem file from the Desktop or Downloads folder (it is easier to just drag this onto the Desktop) into the /.ec2 folder\
+>> mv /Users/scotthai/Desktop/phphackerdojo_key.pem .\
+\
+*note: this is using short-hand for the mv command. 
+\b mv     current_location_of_file    new_location_of_file\
+\
+Step 7:
+\b0  Check to see if the file is in the /.ec2 directory with a List Command\
+>> ls\
+(output should just be the pem key from amazon\
+*note: update security on this file: \
+>> chmod 400 phphackerdojo_key.pem\
+\
+* you can check the permissions with the following command\
+>> ls -l\
+\
+(Sub-Process - Install Command Line Tools)\
+
+\b Step 8:
+\b0  Get your EC2-Command-Line tools into the directory \
+	1. Download from Amazon: http://developer.amazonwebservices.com/connect/entry.jspa?externalID=351 (Download the Amazon EC2 API Tools)\
+	* file: ec2-api-tools.zip\
+	2. move into your /.ec2 folder : \
+	>> mv /Users/scotthai/Desktop/ec2-api-tools-1.3-51254 /.ec2/\
+	3 move into the directory\
+	>> cd ec2-api-tools-1.3-51254\
+	#objective, move the bin and lib folders into the main /.ec2 folder\
+	>> mv bin ..\
+	>> mv lib ..\
+	*note: the .. means the next directory up the line (in this case that means /.ec2 since we were in /.ec2/ec2-api-tools-x.x-xxxxx)\
+
+\b \
+Step 7: 
+\b0 Finished But Remove Clutter\
+1. remove the clutter\
+>> rm -Rf ec2-api-tools* (* is anything following this name)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+\cf2 (*note of caution : rm -Rf is extremely powerful, it can wipe out an entire server or file system, don't use this lightly. \
+Example: If I was to cd to ~ (tilde) and use rm -Rf, well I would have a $2,500 pile of metal instead of a Macbook Pro!.)\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+\cf0 \
+You now have the API Developer Tools installed.\
+\
+(Sub Process - Get your Amazon AWS Account Information safely into your .ec2 folder for use by EC2-API-Tools\
+
+\b Step 8:
+\b0  Get your Certificate Files, AWS Username and Secret\
+	1. go to http://aws.amazon.com\
+	2. click on Account > Security Credentials\
+	3. go to 
+\b Access Credentials
+\b0  > Create a New Certificate\
+	4. Download your 
+\b Private Key File
+\b0  
+\b \
+	
+\b0 5. Download your 
+\b X.509 Certificate\
+	*note: 
+\b0 (these go to Downloads folder) should look like cert-XXXXXXXXX.pem, pk-XXXXXXXXXXX.pem\
+	6. Move these into your /.ec2 folder with the 
+\b mv
+\b0  command\
+	\
+	
+\b Tricks\
+	
+\b0 ----------------\
+	I am lazy, we all are, using Linux commands can help us find these files if we have a clutter desktop. \
+\
+	>> find /Users/<username>/Desktop cert-* (this says search my Desktop for a file that begins with cert- followed by anything!\
+	
+\b Result:
+\b0  cert-XXXX.pem\
+	>> find /Users/<username>/Desktop pk-*\
+	>> pwd\
+	/Users/<username>/Desktop\
+	>> mv pk-XXXX.pem /.ec2/\
+	>> mv cert-XXXX.pem /.ec2/\
+	chmod 400 pk-XXXX.pem cert-XXXX.pem\
+	----------------\
+\
+	* Get your Amazon EC2 Access ID and Secret Access Key info at this time. \
+	was > account > security credentials > 
+\b Access Credentials 
+\b0 > (Tab 1) Access Keys\
+	
+\b Access Key ID\
+	Secret Key ID
+\b0  (click show)\
+	\
+	7. Move to your /.ec2 folder and create a new blank text file to store these in\
+	>> nano credentials.txt (alternatively use emacs or vim)\
+	* paste your access info into this file. \
+	* save and then we will modify the access info so only Super User can read the file\
+	>> chmod 400 credentials.txt\
+\
+
+\b Step 9: Update your Bash Profile
+\b0 \
+	What is a bash profile? It is Linux / Unix user configuration (profile) file for the /bin/bash. This states where the user would like to call specific files or setting 
+\b Environment Variables
+\b0  for the *nix system (unix / linux)\
+\
+	1. check to see if you have a bash_profile\
+	>> file /.bash_profile\
+	
+\b /.bash_profile: cannot open `/.bash_profile' (No such file or directory)
+\b0  will show up if you don't have one\
+	
+\b /.bash_profile: ASCII text
+\b0  will show up if you have a Bash Profile already, if so we can just add to it\
+\
+	2. Create a bash profile of you don't have one. \
+	>> nano /.bash_profile\
+\
+	3. Add the following Lines to your Profile\
+	export EC2_Home=/.ec2/\
+	export PATH:$PATH:$EC2_HOME/bin\
+	export EC2_CERT=/.ec2/cert-xxxxx.pem\
+	export EC2_PRIVATE_KEY=/.ec2/pk-xxxxxx.pem\
+	export JAVA_HOME=/usr/bin/java\
+	export EDITOR=nano\
+	\
+	4. save your profile \
+	(note: your editor can be anything you want, I like nano, you can use 
+\b Textmate
+\b0  by default if you do EDITOR=mate\
+\
+	5. Let the System know you have new requirements (updates to your profile) and want it to use your current settings\
+	>> source /.bash_profile\
+\
+
+\b Step 10: Icing on the Cake\
+	
+\b0 We are now ready to get into our instance. (I know, wow that took a while, but security is everyone's #1 concern and Amazon has great Security measures)\
+\
+	1. Move to your /.ec2 folder\
+	>> cd /.ec2\
+\
+	2. check to see if your ec2-api-tools are connected correctly\
+	>> ec2-describe-regions\
+	REGION	eu-west-1	ec2.eu-west-1.amazonaws.com\
+	REGION	us-east-1	ec2.us-east-1.amazonaws.com\
+	REGION	us-west-1	ec2.us-west-1.amazonaws.com\
+	REGION	ap-southeast-1	ec2.ap-southeast-1.amazonaws.com\
+\
+	3. So your all set to talk to Amazon EC2 now\
+\
+
+\b Start up a new Amazon EC2 instance\
+(
+\f1 ec2-run-instances AMI [-n INSTANCE_COUNT] [-g GROUP [-g GROUP ...]] [-k KEY] [-d USER_DATA | -f FILE_NAME])\
+
+\f0 \
+
+\b0 >> ec2-run-instances 
+\f2\fs26 ami-6f6c8506 -k 
+\f0\fs24 phphackerdojo_key.pem\
+\
+
+\b Step 11: Sign into Amazon EC2 (if running an AMI already)\
+
+\b0 	Now that we have all the pieces of the puzzle setup we can easily communicate (securely) to our Amazon Instance\
+	1. Check to see if you have an instance running\
+	>> ec2-describe-instances\
+\
+	2. Check available Regions\
+	>> ec2-describe-regions (for cdn delivery, etc)\
+\
+	3. ssh -i phphackerdojo_key.pem root@ec2-174-129-154-250.compute-1.amazonaws.com (ec2-XXX-XXX-XXX-XXX.compute-1.amazonaws.com is our public IP address of my instance (this is turning into an available AMI (Amazon Machine Image) so you can all start-up this server (at least a mirror of this server) whenever you need it / to use as a base server for your project)\
+\
+	*Note: What the hell was that? SSH is a secure Shell environment. The mac terminal is also a Shell environment. \
+	>> ssh user@domain.com works as well, the nice thing with the input file (text / cert / etc) is that you can only let on specific users to your site's shell environment.\
+\
+	The authenticity of host 'ec2-174-129-154-250.compute-1.amazonaws.com (174.129.154.250)' can't be established.\
+	RSA key fingerprint is 47:bf:0b:06:ad:bd:62:a5:53:c3:39:b1:58:bf:d7:ce.\
+	Are you sure you want to continue connecting (yes/no)? 
+\b yes
+\b0 \
+\
+	*If you see this you are on your way into the EC2 Unit (this is a first time security measure, also it is letting your computer know that it was unable to look up the server, that is okay, we know it is new)\
+\
+	__|  __|_  )  Fedora 8\
+         _|  (     /    64-bit\
+        ___|\\___|___|\
+\
+ 	Welcome to an EC2 Public Image\
+            :-)\
+    	Base\
+\
+ 	--[ see /etc/ec2/release-notes ]--\
+\
+
+\b Success\
+
+\b0 You have just successfully logged into Amazon EC2. Pat yourself on the back, standup and shake out the nerves, maybe go to the bathroom, it is up to you, this was the hard part. \
+\
+
+\b Using the DojoPHPx64 AMI 
+\b0 (from Scott Haines)\
+AMI NAME: 
+\f2\b\fs26 ami-6f6c8506
+\b0 \
+\
+Launch an ec2-server
+\f0\fs24 \
+\
+Getting an Elastic IP Address\
+\pard\pardeftab720\sl280\sa440\ql\qnatural
+
+\f3\fs28 \cf3 \cb4 ec2-allocate-address
+\f0\fs24 \cf0 \cb1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+\cf0 (STATIC IP) Setting Elastic IP Address to our allocation\
+\pard\pardeftab720\sl280\sa440\ql\qnatural
+
+\f3\fs28 \cf3 \cb4 ec2-associate-address -i i-eb655080 
+\f2\fs26 \cf0 \cb1 174.129.209.7\
+(Open up a Port through the Firewall)\
+
+\f3\fs28 \cf3 \cb4 ec2-authorize <security_group> -p <port_number>\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\f0\b\fs24 \cf0 \cb1 Rebundling your Amazon AMI\
+
+\b0 1. First Upload your key and cert file to your instance (/mnt won't get bundled with your AMI)
+\b \
+
+\b0 sh-3.2# scp -i <your_ec2_keypair>.pem pk-XXXXX.pem root@<your_ec2_ip_address>:/mnt\
+sh-3.2# scp -i <your_ec2_keypair>.pem cert-XXXXX.pem root@<your_ec2_ip_address>:/mnt\
+\
+2. Login to your Amazon EC2 Server (ssh)\
+\
+3. >> ec2-bundle-vol -r 'x86_64' -d /mnt -p <creative_image_name> -u <amazon_user_id> -k /mnt/pk-XXXXXX.pem -c /mnt/cert-XXXXX.pem -s 10240 -e /mnt\
+(this will run for a while)\
+\
+4. >> ec2-upload-bundle -b <your_s3_bucket> -m /mnt/<creative_image_name>.manifest.xml -a <amazon_access_id> -s <amazon_secret_access_id>\
+\
+5. At this point your entire Server has been backed up to your s3 account (seriously, pretty cool)\
+\
+6. 
+\b Register your AMI:
+\b0  ec2-register <your_s3_bucket>/<creative_image_name>.manifest.xml (make sure you open permissions to allow this to be read, along with all of the other pieces as well)\
+\
+ 
+\f3\fs28 \cf3 \cb4 \
+\pard\pardeftab720\sl280\sa440\ql\qnatural
+
+\f0\fs24 \cf0 \cb1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+\cf0 \
+
+\b *Note: Enabling / Creating Root User on Mac\
+
+\b0 ---------------------------------------------------------------------------\
+OSX 10.5 : 
+\b Mac HD > Applications > Utilities > Directory Utility \
+
+\b0 Step 1: Click on the lock to unlock the edit options.\
+Step 2: click on 
+\b EDIT 
+\b0 options you can enable root user, then fill in a password for root user. \
+Step 3: click on the lock to reinstate system security\
+\
+OSX 10.6: \
+Step 1: go to /System/Library/CoreServices and double click Directoy Utility to open up the application. \
+Step 2: click on 
+\b Edit
+\b0 . Enable Root User (if this is already done you will see 
+\b Change Root User Password
+\b0 )\
+Step 3. save changes, relock the program. \
+\
+------------------------------------------------------------\
+\
+
+\b Notes on Server \
+
+\b0 ------------------------------------------------------------\
+Linux Fedora Core System (8) x86_64\
+7GB Ram\
+\
+Applications:\
+
+\b Yum
+\b0  (yellow-dog packet manager: with dries.repo added // dries.repo is like the dag.repo for cents)\
+
+\b Apache
+\b0 \
+	Apache 2.2.15 (x84_64) httpd\
+	Apache Dev Tools : httpd-devel package\
+	\
+	
+\b Apache Dependencies:
+\b0  \
+	apr.x86_64 0:1.2.11-2, \
+	apr-devel.x86_64 0:1.2.11-2, \
+	apr-util.x86_64 0:1.2.10-2.fc8, \
+	apr-util-devel.x86_64 0:1.2.10-2.fc8, \
+	cyrus-sasl-devel.x86_64 0:2.1.22-8.fc8, \
+	db4-cxx.x86_64 0:4.6.21-3.fc8, \
+	db4-devel.x86_64 0:4.6.21-3.fc8, \
+	expat-devel.x86_64 0:2.0.1-2, \
+	httpd-tools.x86_64 0:2.2.9-1.fc8, \
+	openldap-devel.x86_64 0:2.3.39-4.fc8\
+\
+	
+\b Modules Location\
+	
+\b0 /usr/lib64/httpd/modules\
+\
+	
+\b Commands\
+	
+\b0 /etc/init.d/httpd start\
+	/etc/init.d/httpd stop\
+\
+
+\b PHP 5.2.6\
+	
+\b0 libxml2 (x86_64)\
+	GD Library (graphics) \
+	(build options: ./configure --with-apxs2=/usr/local/apache/bin/apxs --with-mysql=/usr/bin/ --with-libdir=lib64 --prefix=/usr/local/apache/php --with-config-file-path=/usr/local/apache/php --enable-force-cgi-redirect --disable-cgi --with-zlib --with-gettext --with-gdbm)\
+	Pear Location: /usr/local/apache/php/etc/pear.conf\
+	\
+
+\b MySQL 5
+\b0 \
+	mysql.x86_64\
+	mysql-devel.x86_64\
+	mysql-server.x86_64\
+	mysql-test.x86_64\
+\
+	
+\b MySQL Dependencies:
+\b0 \
+	device-mapper-devel.x86_64 0:1.02.22-1.fc8,\
+	e2fsprogs-devel.x86_64 0:1.40.4-3.fc8,\
+	keyutils-libs-devel.x86_64 0:1.2-2.fc6,\
+	krb5-devel.x86_64 0:1.6.2-14.fc8,\
+	libselinux-devel.x86_64 0:2.0.43-1.fc8,\
+	libsepol-devel.x86_64 0:2.0.15-1.fc8,\
+	mysql-libs.x86_64 0:5.0.45-6.fc8,\
+	openssl-devel.x86_64 0:0.9.8b-17.fc8,\
+	perl-DBD-MySQL.x86_64 0:4.005-2.fc8.1,\
+	perl-DBI.x86_64 0:1.58-2.fc8,\
+	zlib-devel.x86_64 0:1.2.3-14.fc8\
+\
+	
+\b MySQL Information\
+	
+\b0 --socket=/var/lib/mysql/mysql.sock\
+	--pid-file=/var/run/mysqld/mysqld.pid\
+\
+	
+\b Important\
+	
+\b0 Your first run will have MySQL in open root, no password mode, this is not good, so update the User system to give your database a Username and Password (eg. not root since running as root is not good)\
+\
+
+\b FTP\
+	
+\b0 vsftp (Very Secure FTP!)\
+	All Users chromed into home directories (if you want to open access for yourself, don't add your name to the /etc/vsftpd/chroot_list file)\
+	*note: If you want to open up safe access without the ability to traverse back down the server tree, use the following command\
+	mount --bind /path/to/folder /home/<username>/<foldername>\
+\
+	*You will have to modify the default permissions for the dojo_user ftp user so that he/she can upload files that are not automatically set to Unix permissions 0000\
+	\
+\
+
+\b Paths: 
+\b0 \
+Apache: /usr/local/apache\
+PHP: /usr/bin/php\
+MySQL: /usr/bin/mysql\
+MySQL Daemon: /etc/init.d/mysqld\
+	Start: ./mysqld start\
+	Stop: ./mysqld stop\
+\
+
+\b Users\
+
+\b0 dojo_user (password: hackerphp*)\
+dojo_user is chrooted to the /home/dojo_user directory. However, the volume /var/www/ is mounted to the httpdocs folder so you can grant access to yourself but not worry about hackers getting into your goodies\
+permissions on /var/www/html are Unix 0775 (this means the group has write access)\
+\
+}

@@ -1,0 +1,255 @@
+/* Default Stylesheet */
+body{
+	margin:0;
+	padding:0;
+	font-size:.8em; /*About 14px but Scalable*/
+	color: #333333;
+	font-family: 'Helvetica Neue', Arial, sans-serif;
+	background:#1b1b1b;
+}
+
+h1,h2,h3,h4,h5,h6,p,form,input,textarea,button,ul,li,dl,dt,dd,ol{
+	margin:0;
+	padding:0;
+}
+
+a:active, a:visited, a:link{
+	text-decoration:none;
+	color:#666666;
+}
+a:hover{
+	text-decoration:underline;
+	color:#990000;
+}
+#mainwrap{
+	width:1024px;
+	margin:0px auto;
+	position:relative;
+	background:#ffffff;
+}
+.footer{
+	width:1024px;
+	margin:0px auto;
+	background:#fbfbfb;
+	padding:20px 0;
+	border-top:2px solid #1b1b1b;
+}
+.footer ul{
+	list-style-type:none;
+}
+.footer ul:first-child{
+	margin-left:20px;
+}
+.container{width:100%;}
+/* Layout */
+.padten{padding:10px;}
+.padl{padding-left:10px;}
+.padr{padding-right:10px;}
+.padt{padding-top:10px;}
+.padb{padding-bottom:10px;}
+
+.block{display:block;}
+
+.fl{float:left;}
+.fr{float:right;}
+
+.mt{margin-top:10px;}
+.mb{margin-bottom:10px;}
+.mr{margin-right:10px;}
+.ml{margin-left:10px;}
+.mlft{margin-left:15px;}
+
+.clearfix{clear:both;}
+
+.wseventy{width:70%;}
+.wfifty{width:50%;}
+.wthirty{width:30%;}
+
+/* Global Colors */
+.glbGray{color:#666666 !important;}
+.glbDkGray{color:#333333 !important;}
+.glbWhite{color:#ffffff !important;}
+
+/* Global Forms */
+.niceForm{
+	border:1px solid #CCCCCC;
+	display:block;
+	margin:10px 0;
+	padding:5px;
+	width:auto;
+}
+.sizeForm{
+	width:400px;
+}
+/*just size the container the form goes into and it will always reflect the new size*/
+.niceForm label:first-child{
+	margin-top:5px;
+}
+.niceForm label{
+	display:block;
+	float:left;
+	margin-right:15px;
+	position:relative;
+	text-align:right;
+	width:80px;
+	font-weight:bold;
+}
+/* Input Style */
+.sInput{
+	background:none repeat scroll 0 0 #FFFFFF;
+	border:1px solid #CCCCCC;
+	display:inline-block;
+	margin:2px 0;
+	font-family: 'Lucida Grande',Arial,sans-serif;
+	padding:3px;
+	width:65%;
+}
+
+/*TextArea Style*/
+.sInputTA{
+	background:none repeat scroll 0 0 #FFFFFF;
+	border:1px solid #CCCCCC;
+	margin:2px 0;
+	min-width:200px;
+	font-size:.8em;/*Be wary of how you use percentage based sizes*/
+	/*automatically turns field into scroll box if needed*/
+	overflow:auto;
+	padding:3px;
+	width:65%;
+	font-family: 'Lucida Grande',Arial,sans-serif;
+}
+
+/* Override Submit */
+.niceForm input[type="submit"] {
+	border:1px transparent;
+	padding:5px 7px;
+	-moz-border-radius: 5px;
+	background: -moz-linear-gradient(
+				center bottom,
+			    rgb(79,11,11) 13%,
+			    rgb(158,20,20) 57%,
+			    rgb(184,24,24) 87%
+	);
+	margin:2px 0;
+	color:#ffffff;
+	text-shadow: 2px 2px 2px #000;
+	cursor:pointer;
+}
+
+.cancel {
+	border:1px transparent;
+	padding:5px 7px;
+	-moz-border-radius: 5px;
+	background: -moz-linear-gradient(center bottom , #333333 13%, #666666 57%, #999999 87%) repeat scroll 0 0 transparent;
+	margin:2px 0;
+	color:#ffffff;
+	text-shadow: 2px 2px 2px #000;
+	cursor:pointer;
+}
+/* Unfortunately we have to do something a little different in Safari */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	
+	.cancel{
+		-webkit-border-radius: 5px !important;
+		background: -webkit-gradient(linear,left bottom,left top,color-stop(0.22, #333333),color-stop(0.63, #666666),color-stop(0.93, #999999));
+		margin:2px 0;
+		color:#ffffff;
+		text-shadow: 2px 2px 2px #000;
+		cursor:pointer;
+	}
+	
+	.niceForm input[type="submit"]{
+	-webkit-border-radius: 5px !important;
+	background: -webkit-gradient(linear,left bottom,left top,color-stop(0.22, rgb(79,11,11)),color-stop(0.63, rgb(158,20,20)),color-stop(0.93, rgb(184,24,24)));
+}
+}
+
+	
+	
+/**/
+
+
+/* Images */
+.imgs{
+	padding:5px;
+	background:#ffffff;
+	border:1px solid #cccccc;
+}
+
+/* Header Main View */
+#blog_head{
+	width:1024px;
+	display:block;
+	position:relative;
+	background:#ffffff;
+	margin:0 auto;
+	border-bottom:2px solid #333333;
+}
+#blog_head ul{
+	list-style-type:none;
+}
+.simple_nav{
+	display:inline-block;
+	padding:10px 0;
+	vertical-align: bottom;
+}
+
+.dojo_logo{
+	background:transparent url(/blog/images/dojo_icon_bigger.png) no-repeat scroll left center;
+	display:inline-block;
+	height:46px;
+	margin-right:10px;
+	width:46px;
+}
+/**/
+/* Styling the Dodjo Blog */
+	.header{
+		background: #990000 url(../../assets/dojo_header_repeat.png);
+		min-height: 75px;
+		display:block;
+		width:100%;
+	}
+	.main_logo{
+		background: transparent url(../../assets/dojo_logo.png) no-repeat center left;
+		width:212px;
+		height:75px;
+		display:inline-block;
+		cursor:pointer;
+	}
+/**/
+
+/* Custom Page View (post_variables_part_1) */
+.main_view_left{
+	float:left;
+	width:50%;
+	display:inline-block;
+	position:relative;
+}
+.main_view_right{
+	float:left;
+	width:50%;
+	display:inline-block;
+	position:relative;
+}
+.indent_submit_button{
+	float:right;
+	margin-right:25px;
+	margin-top:5px;
+}
+
+.notification{
+	padding:10px;
+	display:block;
+	border-bottom:1px solid #cccccc;
+	margin-bottom:3px;
+	color:#333333;
+	background:#e1e1e1;
+	margin-left:15px;
+	margin-bottom:15px;
+}
+/* */
+
+
+
+
+

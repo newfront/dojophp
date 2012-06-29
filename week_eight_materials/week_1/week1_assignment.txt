@@ -1,0 +1,84 @@
+Food For Thought. 
+##########################################
+php tags <?php  ?>
+php quick echo <?= $var ?>
+php variables:  $ followed by a name 
+(alpha chars are standard) = ex: $traffic
+##########################################
+
+1. How would I connect the following together.
+ex. print out the following using an echo statment. "Hello, How are you?" from the variables below.
+
+$s1 = 'hello, how ';
+$s2  = 'are you doing?';
+
+Hint. You can use a function or a special piece of php glue to get these to play together. 
+
+-----------------------------------------------------
+
+2. Use the following sentence to build an Array. 
+
+$s = "hello sandy what time is dinner";
+
+Hint. Think explosions, what do bombs do? (check the php manual for something that sounds like that)
+
+-----------------------------------------------------
+
+3. Use your Array from Question #2 to rebuild the original string, you can use a for , foreach, or while loop to do so.
+4. Use your Array from Question #2 to rebuild the original string with one built-in PHP Function. (think black holes)
+5. Create a function that will append and prepend a word to a sentence. 
+ex. function doAdd(string, placement){
+             $s;
+             if(placement == 'prepend'){
+               // your concat function
+             } else {
+               // your logic
+             }
+      return s;
+     }
+6. Come up with a real life situation where you would need to use a function to get an answer. Create a function description (layman's description of what needs to be accomplished, and create psudeo-code that would get this function completed)
+
+7. Try to get your function from Question #6 to work. If you get stuck, try to debug your code and see if you can break down the problem into smaller, easier to bit off chunks.
+
+8. What does print_r do? What about sprint_f?
+
+9. Use print_r with your Array from Question #2
+
+10. How do I create an associative array? What is an example of one? (hint. numbers are not the only thing that can act as indexes within Arrays)
+
+11. What is a multidimensional Array? How do I create one? What is a quick way of merging two arrays into a single multidimensional array?
+
+12. What is an Object (MyClass example) ? Why do objects make programming easier? What would be a useful Class to create and use within a real world situation. 
+
+(MyClass example)
+
+<?php
+class MyClass{
+	private $price;
+	private $title;
+	private $cpu;
+	
+	public function __construct($price, $title, $cpu){
+		$this->price = $price;
+		$this->title = $title;
+		$this->upc = $cpu;
+	}
+	
+	/*public function getPrice(){
+		return $this->price;
+	}*/
+	
+	public function getThree(){
+		$tmp = '';
+		$tmp .= $this->price;
+		$tmp .= ' - '.$this->title;
+		$tmp .= ' - '.$this->upc;
+		return $tmp;
+	}
+}
+$three = new MyClass(12.00, 'Cool PHP', '112019029102');
+echo $three->getThree();
+$four = new MyClass(18.00, 'Cool PHP 3', '112019029102fffgfggfg');
+echo '<br>';
+echo $four->getThree();
+?>

@@ -1,0 +1,74 @@
+/* Main Stylesheet
+- maybe for a cell phone or something
+ */
+body{
+	margin:0;
+	padding:0;
+	font-size:1em; /*About 14px but Scalable*/
+	color: #333333;
+	font-family: 'Helvetica Neue', Arial, sans-serif;
+	background:#1b1b1b;
+}
+
+h1,h2,h3,h4,h5,h6,p,form,input,textarea,button,ul,li,dl,dt,dd,ol{
+	margin:0;
+	padding:0;
+}
+
+a:active, a:visited, a:link{
+	text-decoration:none;
+	color:#666666;
+}
+a:hover{
+	text-decoration:underline;
+	color:#990000;
+}
+#mainwrap{
+	background:#ffffff;
+	width:380px;
+	height:480px;
+	margin:0px auto;
+	position:relative;
+}
+.footer{
+	width:380px;
+	margin:0px auto;
+	position:relative;
+}
+.footer ul{
+	margin-top:10px;
+	list-style-type:none;
+}
+.container{width:100%;}
+/* Layout */
+.padten{padding:10px;}
+.padl{padding-left:10px;}
+.padr{padding-right:10px;}
+.padt{padding-top:10px;}
+.padb{padding-bottom:10px;}
+
+.fl{float:left;}
+.fr{float:right;}
+
+.mt{margin-top:10px;}
+.mb{margin-bottom:10px;}
+.mr{margin-right:10px;}
+.ml{margin-left:10px;}
+
+.clearfix{clear:both;}
+
+.wseventy{width:70%;}
+.wfifty{width:50%;}
+.wthirty{width:30%;}
+
+/* Global Colors */
+.glbGray{color:#666666 !important;}
+.glbDkGray{color:#333333 !important;}
+.glbWhite{color:#ffffff !important;}
+
+/* Images */
+.imgs{
+	padding:5px;
+	background:#ffffff;
+	border:1px solid #cccccc;
+}
